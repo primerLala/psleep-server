@@ -1,0 +1,19 @@
+
+# compiled output
+/target
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+*.iml
+.project
+.classpath
+
+# System Files
+.DS_Store
+Thumbs.db
