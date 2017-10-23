@@ -24,6 +24,8 @@ public class Temperature extends BaseEntity{
     private Integer patient_id;
     private String patient_name;
     private Timestamp record_time;
+    private Integer hour;
+    private Integer minute;
 
     public Integer getTemperature_id() {
         return temperature_id;
@@ -63,5 +65,21 @@ public class Temperature extends BaseEntity{
 
     public void setRecord_time(Timestamp record_time) {
         this.record_time = record_time;
+    }
+
+    public Integer getHour() {
+        return hour;
+    }
+
+    public void setHour(Integer hour) {
+        this.hour = hour;
+    }
+
+    public Integer getMinute() {
+        return minute;
+    }
+
+    public void setMinute(Integer minute) {
+        this.minute = minute;
     }
 }

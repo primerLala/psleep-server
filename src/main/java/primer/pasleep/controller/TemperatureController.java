@@ -52,4 +52,17 @@ public class TemperatureController {
         }
         return JsonResult.buildSuccessResult(temperatureList);
     }
+
+    @RequestMapping(value = "/list/patient/{patient_id}/last_num/{last_num}/time_space/{time_space}")
+    @ResponseBody
+    public JsonResult listByTimeSpace(@PathVariable Integer patient_id, @PathVariable Integer last_num,
+                                      @PathVariable Integer time_space) {
+        List<Temperature> temperatureList;
+        try {
+            temperatureList = temperatureService.listByTimeSpace(patient_id, time_space, last_num);
+        } catch (Exception e) {
+            return JsonResult.buildFailResult(e.getMessage());
+        }
+        return JsonResult.buildSuccessResult(temperatureList);
+    }
 }

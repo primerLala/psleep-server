@@ -44,4 +44,31 @@ public class TemperatureService {
 
         return temperatureMapper.selectByExample(example);
     }
+
+    public List<Temperature> listByTimeSpace(Integer patientId, Integer timeSpace, Integer lastNum) throws Exception {
+        Example example = new Example(Temperature.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("patient_id", patientId);
+        switch (timeSpace) {
+            case 1:
+                break;
+            case 5:
+                criteria.andCondition("minute % 5 = 0");
+                break;
+            case 15:
+                criteria.andCondition("minute % 5 = 0");
+                break;
+            case 30:
+                criteria.andCondition("minute % 5 = 0");
+                break;
+            case 60:
+                criteria.andCondition("minute = 0");
+                break;
+            default:
+                throw new Exception("time_space 只能为1，5，15，30，60");
+        }
+        example.setOrderByClause("record_time desc limit " + lastNum);
+
+        return temperatureMapper.selectByExample(example);
+    }
 }
