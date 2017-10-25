@@ -21,7 +21,9 @@ public class Alarm {
     private Integer patient_id;
     private Integer hour;
     private Integer minute;
-    private boolean isShock;
+    private Boolean is_shock;
+    private String repeat_content;
+    private Boolean is_on;
 
     public Integer getAlarm_id() {
         return alarm_id;
@@ -55,12 +57,27 @@ public class Alarm {
         this.minute = minute;
     }
 
-    public boolean isShock() {
-        return isShock;
+    public Boolean getIs_shock() {
+        return is_shock;
     }
 
-    public void setIsShock(boolean isShock) {
-        this.isShock = isShock;
+    public void setIs_shock(Boolean is_shock) {
+        this.is_shock = is_shock;
     }
 
+    public String getRepeat_content() {
+        return repeat_content;
+    }
+
+    public void setRepeat_content(String repeat_content) {
+        this.repeat_content = repeat_content;
+    }
+
+    public Boolean getIs_on() {
+        return is_on;
+    }
+
+    public void setIs_on(Boolean is_on) {
+        this.is_on = is_on;
+    }
 }

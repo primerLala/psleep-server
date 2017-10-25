@@ -126,11 +126,13 @@ CREATE TABLE `t_temperature` (
 
 DROP TABLE IF EXISTS `t_alarm`;
 CREATE TABLE `t_alarm` (
-  `alarm_id`   INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `patient_id` INT(11)          NOT NULL,
-  `hour`       INT(11)          NOT NULL,
-  `minute`     INT(11)          NOT NULL,
-  `isShock`    TINYINT(1)       NOT NULL,
+  `alarm_id`       INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `patient_id`     INT(11)          NOT NULL,
+  `hour`           INT(11)          NOT NULL,
+  `minute`         INT(11)          NOT NULL,
+  `is_shock`       TINYINT(1)       NOT NULL,
+  `repeat_content` VARCHAR(45)      NULL,
+  `is_on`          TINYINT(1)       NOT NULL,
   PRIMARY KEY (`alarm_id`)
 )
   ENGINE = InnoDB
