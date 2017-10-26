@@ -130,7 +130,7 @@ CREATE TABLE `t_alarm` (
   `patient_id`     INT(11)          NOT NULL,
   `hour`           INT(11)          NOT NULL,
   `minute`         INT(11)          NOT NULL,
-  `is_shock`       TINYINT(1)       NOT NULL,
+  `is_shock`       TINYINT(1)       NULL,
   `repeat_content` VARCHAR(45)      NULL,
   `is_on`          TINYINT(1)       NOT NULL,
   PRIMARY KEY (`alarm_id`)
