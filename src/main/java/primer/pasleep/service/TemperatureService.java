@@ -1,14 +1,13 @@
 package primer.pasleep.service;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import primer.pasleep.entity.Temperature;
 import primer.pasleep.mapper.TemperatureMapper;
 import tk.mybatis.mapper.entity.Example;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by primer on 17/10/17.
@@ -31,7 +30,7 @@ public class TemperatureService {
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("patient_id", patientId);
         criteria.andBetween("record_time", startTime, endTime);
-        example.orderBy("record_time");
+        example.orderBy("temperature_id");
 
         return temperatureMapper.selectByExample(example);
     }
@@ -40,7 +39,7 @@ public class TemperatureService {
         Example example = new Example(Temperature.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("patient_id", patientId);
-        example.setOrderByClause("record_time limit " + lastNum);
+        example.setOrderByClause("temperature_id limit " + lastNum);
 
         return temperatureMapper.selectByExample(example);
     }
@@ -56,10 +55,10 @@ public class TemperatureService {
                 criteria.andCondition("minute % 5 = 0");
                 break;
             case 15:
-                criteria.andCondition("minute % 5 = 0");
+                criteria.andCondition("minute % 15 = 0");
                 break;
             case 30:
-                criteria.andCondition("minute % 5 = 0");
+                criteria.andCondition("minute % 30 = 0");
                 break;
             case 60:
                 criteria.andCondition("minute = 0");
@@ -67,7 +66,7 @@ public class TemperatureService {
             default:
                 throw new Exception("time_space 只能为1，5，15，30，60");
         }
-        example.setOrderByClause("record_time desc limit " + lastNum);
+        example.setOrderByClause("temperature_id desc limit " + lastNum);
 
         return temperatureMapper.selectByExample(example);
     }
